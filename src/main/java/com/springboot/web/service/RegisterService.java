@@ -7,14 +7,14 @@ import com.springboot.web.dao.UserDAO;
 import com.springboot.web.model.User;
 
 @Service
-public class LoginService {
+public class RegisterService {
 
 	@Autowired
 	UserDAO userDao;
 	
-	public boolean validateUser(String name, String pass) {        
-		User user = userDao.findOne(name);
-		return user.getName().equals(name) && user.getPass().equals(pass);
+	public void register(String name, String pass) {
+		User user = new User(name, pass);
+		userDao.save(user);
 	}
 
 }
